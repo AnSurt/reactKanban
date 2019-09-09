@@ -1,0 +1,50 @@
+.flex-conteiner{
+display: flex;
+}
+.flex-element{
+    border: 1px solid black;
+    margin: 10px;
+    height: 25px;
+   background-color: rgba(216, 194, 194, 0.658);
+  
+}
+.flex-element2{
+    border: 1px solid black;
+    display: flex;
+    width: 800px;
+    height: 900px;
+    background-color: rgba(176, 191, 194, 0.26);
+}
+.flex-columns{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 10px;
+    background-color: rgba(141, 150, 140, 0.575);
+  
+}
+.flex-card{
+    border: 1px solid black;
+    margin: 10px;
+    height: 100px;
+    background-color: rgba(245, 245, 220, 0.486);
+  
+}
+.columnButton{
+    background-color: rgba(112, 111, 111, 0.349);
+    border: 1px solid black;
+    margin-left: 80%;
+    margin-right: 5%;
+    text-align: center;
+
+}
+.cardButton{
+    background-color: rgba(112, 111, 111, 0.349);
+    border: 1px solid black;
+    margin-left: 60%;
+    margin-right: 5%;
+    text-align: center;
+    
+
+}
