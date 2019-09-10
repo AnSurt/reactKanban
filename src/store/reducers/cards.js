@@ -1,9 +1,10 @@
 import {
-  successAction,
-  failureAction,
   GET_CARDS,
+  ADD_CARDS,
   UPDATE_CARDS,
-  DELETE_CARDS
+  DELETE_CARDS,
+  successAction,
+  failureAction
 } from "../types";
 const initialState = {
   data: []

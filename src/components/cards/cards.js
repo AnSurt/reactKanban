@@ -1,7 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
-import "../style.css";
-import DeleteButton from "./deleteButton";
+import "../../style.css";
+import DeleteButton from "../buttons/deleteButton";
 
 export default class Card extends React.Component {
   render() {
