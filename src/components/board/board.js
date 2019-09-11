@@ -3,10 +3,10 @@ import "../../style.css";
 
 import Column from "../columns/index";
 
-export default ({ column }) => {
+export default ({ columns }) => {
   return (
     <div className="flex-element2">
-      {this.state.columns.map(column => (
+      {columns.map(column => (
         <Column column={column}></Column>
       ))}
     </div>

@@ -5,16 +5,16 @@ import "../../style.css";
 import Card from "../cards/cards.js";
 import AddButton from "../buttons/addButton";
 
-export default ({ card }) => {
+export default ({ cards, column }) => {
   return (
     <div className="flex-columns">
-      {this.props.column.title}
-      {this.state.cards
-        .filter(card => card.columnId == this.props.column.id)
+      {column.title}
+      {cards
+        .filter(card => card.columnId == column.id)
         .map(card => (
           <Card card={card}></Card>
         ))}
-      <AddButton id={this.props.column.id}></AddButton>
+      <AddButton id={column.id}></AddButton>
     </div>
   );
 };

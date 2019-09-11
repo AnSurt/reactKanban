@@ -12,6 +12,12 @@ const initialState = {
 
 export default function Cards(state = initialState, action) {
   switch (action.type) {
+    case successAction(DELETE_CARDS):
+      console.log(action);
+      return {
+        ...state,
+        data: [state.data.filter(card => card.id === action.id), action.data]
+      };
     case successAction(GET_CARDS):
       return {
         data: action.data
@@ -25,14 +31,14 @@ export default function Cards(state = initialState, action) {
       return {
         data: action.data
       };
-    case ADD_CARDS:
+
+    case successAction(ADD_CARDS):
+      console.log(action);
       return {
-        data: action.data
+        ...state,
+        data: [...state.data, action.data]
       };
-    case successAction(DELETE_CARDS):
-      return {
-        data: state.data.filter(card => card.id === action.id)
-      };
+
     default:
       return state;
   }

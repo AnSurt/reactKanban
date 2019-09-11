@@ -51,10 +51,16 @@ export function putCards(card) {
 }
 export function deleteCards(id) {
   return dispatch =>
-    fetch("http://localhost:8089/api/card/" + id.toString(), {
+    fetch("http://localhost:8089/api/card/" + id, {
       method: "DELETE"
-    }) // Redux Thunk handles these
-      .then(res => res.json())
-      .then(() => dispatch({ type: successAction(DELETE_CARDS), data: id }))
-      .catch(err => dispatch({ type: failureAction(DELETE_CARDS), err }));
+    }).then(
+      fetch("http://localhost:8089/api/card") // Redux Thunk handles these
+        .then(res => res.json())
+        .then(data => dispatch({ type: successAction(DELETE_CARDS), data }))
+        .catch(err => dispatch({ type: failureAction(DELETE_CARDS), err }))
+    );
+  // Redux Thunk handles these
+  // .then(res => res.json())
+  // .then(data => dispatch({ type: successAction(DELETE_CARDS), data }))
+  // .catch(err => dispatch({ type: failureAction(DELETE_CARDS), err }));
 }
