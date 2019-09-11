@@ -59,8 +59,10 @@ export function deleteCards(id) {
         .then(data => dispatch({ type: successAction(DELETE_CARDS), data }))
         .catch(err => dispatch({ type: failureAction(DELETE_CARDS), err }))
     );
+
   // Redux Thunk handles these
   // .then(res => res.json())
   // .then(data => dispatch({ type: successAction(DELETE_CARDS), data }))
   // .catch(err => dispatch({ type: failureAction(DELETE_CARDS), err }));
 }
+//
