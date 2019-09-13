@@ -15,8 +15,7 @@ export default function Cards(state = initialState, action) {
     case successAction(DELETE_CARDS):
       console.log(action);
       return {
-        ...state,
-        data: [state.data.filter(card => card.id === action.id), action.data]
+        data: state.data.filter(card => card.id != action.data)
       };
     case successAction(GET_CARDS):
       return {
@@ -27,9 +26,19 @@ export default function Cards(state = initialState, action) {
         ...state,
         error: action.error
       };
-    case UPDATE_CARDS:
+    case successAction(UPDATE_CARDS):
+      const newCards = state.data.filter(card => card.id != action.data.id);
+      if (Number.isInteger(action.insertAfter)) {
+        newCards.splice(
+          newCards.findIndex(card => card.id == action.insertAfter),
+          0,
+          action.data
+        );
+      } else {
+        newCards.push(action.data);
+      }
       return {
-        data: action.data
+        data: newCards
       };
 
     case successAction(ADD_CARDS):

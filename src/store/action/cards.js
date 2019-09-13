@@ -35,9 +35,9 @@ export function postCards(card) {
       .then(data => dispatch({ type: successAction(ADD_CARDS), data }))
       .catch(err => dispatch({ type: failureAction(ADD_CARDS), err }));
 }
-export function putCards(card) {
+export function putCards(card, cardId) {
   return dispatch =>
-    fetch("http://localhost:8089/api/card" + card.id, {
+    fetch("http://localhost:8089/api/card/" + card.id, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -46,23 +46,23 @@ export function putCards(card) {
       body: JSON.stringify(card)
     }) // Redux Thunk handles these
       .then(res => res.json())
-      .then(data => dispatch({ type: successAction(UPDATE_CARDS), data }))
+      .then(data =>
+        dispatch({
+          type: successAction(UPDATE_CARDS),
+          data,
+          insertAfter: cardId
+        })
+      )
       .catch(err => dispatch({ type: failureAction(UPDATE_CARDS), err }));
 }
 export function deleteCards(id) {
-  return dispatch =>
+  return dispatch => {
     fetch("http://localhost:8089/api/card/" + id, {
       method: "DELETE"
-    }).then(
-      fetch("http://localhost:8089/api/card") // Redux Thunk handles these
-        .then(res => res.json())
-        .then(data => dispatch({ type: successAction(DELETE_CARDS), data }))
-        .catch(err => dispatch({ type: failureAction(DELETE_CARDS), err }))
-    );
-
-  // Redux Thunk handles these
-  // .then(res => res.json())
-  // .then(data => dispatch({ type: successAction(DELETE_CARDS), data }))
-  // .catch(err => dispatch({ type: failureAction(DELETE_CARDS), err }));
+    })
+      .then(() => dispatch({ type: successAction(DELETE_CARDS), data: id }))
+      .catch(err => dispatch({ type: failureAction(DELETE_CARDS), err }));
+    // Redux Thunk handles these
+  };
 }
 //
